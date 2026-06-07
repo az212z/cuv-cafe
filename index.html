@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CŪV · كوف — قهوة مختصة في تبوك</title>
+<meta name="description" content="CŪV Specialty Coffee في تبوك — قهوة مختصة بأجواء دافئة وهادئة وتصميم مينمال. ماتشا، فلتر، وحلويات. حي مروج الأمير، تبوك.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Markazi+Text:wght@400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+:root{
+  --clay:#b06a45; --clay-d:#955434; --clay-l:#c8865f;
+  --sand:#efe7d8; --sand2:#e7dcc8; --paper:#faf5ec; --cream:#f4ecdd;
+  --sage:#5c6f56; --sage-d:#47583f; --marble:#3c4a3a;
+  --ink:#33291f; --ink-soft:#6d6051;
+  --r:14px; --shadow:0 24px 60px -28px rgba(80,55,35,.42);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;color:var(--ink);background:var(--paper);overflow-x:hidden;line-height:1.85}
+h1,h2,h3,.disp{font-family:'Markazi Text',serif;font-weight:600}
+.serif{font-family:'Cormorant Garamond',serif}
+.en{font-family:'Cormorant Garamond',serif;direction:ltr;unicode-bidi:isolate;letter-spacing:.5px}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+section{position:relative}
+
+nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+  padding:15px 24px;background:rgba(250,245,236,0);transition:.35s}
+nav.scrolled{background:rgba(250,245,236,.92);backdrop-filter:blur(12px);box-shadow:0 8px 30px -20px rgba(80,55,35,.3)}
+nav .brand{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.9rem;letter-spacing:3px;color:var(--clay-d);transition:.3s}
+nav.top .brand{color:#fff}
+nav ul{display:flex;gap:30px;list-style:none}
+nav ul a{font-size:.98rem;color:var(--ink-soft);font-weight:500;position:relative;transition:.25s}
+nav.top ul a{color:#f4ecdd}
+nav ul a:hover{color:var(--clay)}
+nav.top ul a:hover{color:#fff}
+nav ul a::after{content:"";position:absolute;bottom:-6px;right:0;width:0;height:1.5px;background:var(--clay);transition:.3s}
+nav ul a:hover::after{width:100%}
+.burger{display:none;font-size:1.7rem;color:var(--clay-d);background:none;border:none;cursor:pointer}
+nav.top .burger{color:#fff}
+
+.mnav{position:fixed;inset:0;z-index:80;background:linear-gradient(165deg,var(--sage-d),var(--marble));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
+  opacity:0;visibility:hidden;transform:scale(1.04);transition:.4s}
+.mnav.open{opacity:1;visibility:visible;transform:scale(1)}
+.mnav a{color:var(--cream);font-family:'Markazi Text';font-weight:600;font-size:2rem}
+.mnav a:active{color:var(--clay-l)}
+.mnav .mclose{position:absolute;top:22px;left:22px;font-size:2rem;color:var(--cream);background:none;border:none}
+.mnav .deco{font-family:'Cormorant Garamond';font-style:italic;color:var(--clay-l);letter-spacing:4px;font-size:1.2rem}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url(img/hero.jpg) center/cover;transform:scale(1.06)}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(45,38,28,.78) 0%,rgba(60,48,34,.45) 50%,rgba(60,48,34,.2) 100%)}
+.hero .wrap{position:relative;z-index:2;color:#fff;padding-top:96px}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:'Cormorant Garamond';font-style:italic;letter-spacing:2px;
+  font-size:1.05rem;color:#f0e3d2;border:1px solid rgba(244,236,221,.45);padding:6px 18px;border-radius:40px;margin-bottom:24px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(5rem,18vw,11rem);line-height:.85;letter-spacing:6px;text-shadow:0 10px 50px rgba(0,0,0,.4)}
+.hero h1 .sub{display:block;font-family:'Markazi Text';font-weight:500;font-size:clamp(1.3rem,4vw,2rem);letter-spacing:3px;color:#f0e3d2;margin-top:14px}
+.hero p.lead{max-width:520px;margin:24px 0 32px;font-size:1.12rem;color:#f1e8da;font-weight:300}
+.hero .moto{font-family:'Cormorant Garamond';font-style:italic;color:var(--clay-l);font-size:1.2rem;letter-spacing:1px;margin-bottom:4px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:46px;font-family:'Markazi Text';font-weight:600;font-size:1.15rem;cursor:pointer;transition:.28s;border:1.5px solid transparent}
+.btn-clay{background:var(--clay);color:#fff}
+.btn-clay:hover{background:var(--clay-d);transform:translateY(-3px)}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-3px)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:38px;padding-top:26px;border-top:1px solid rgba(255,255,255,.2)}
+.hero-meta .it{display:flex;align-items:center;gap:9px;font-size:1.05rem;color:#f1e8da;font-family:'Markazi Text';font-weight:500}
+.hero-meta .it i{color:var(--clay-l);font-size:1.3rem}
+
+/* marquee */
+.marquee{background:var(--sage-d);color:var(--cream);padding:13px 0;overflow:hidden;white-space:nowrap}
+.marquee .track{display:inline-block;animation:scroll 26s linear infinite;font-family:'Markazi Text';font-weight:500;font-size:1.2rem;letter-spacing:.5px}
+.marquee .track span{margin:0 22px}
+.marquee .track i{color:var(--clay-l);font-size:.55rem;vertical-align:middle}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(50%)}}
+
+.sec{padding:98px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
+.sec-head .kick{font-family:'Cormorant Garamond';font-style:italic;letter-spacing:3px;color:var(--clay);font-size:1.15rem}
+.sec-head h2{font-size:clamp(2.4rem,5.5vw,3.6rem);color:var(--sage-d);margin:4px 0 12px;line-height:1.1}
+.sec-head p{color:var(--ink-soft);font-size:1.05rem}
+.divider{width:54px;height:2px;background:var(--clay);margin:14px auto}
+
+/* story */
+.story{background:var(--cream)}
+.story-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:60px;align-items:center}
+.story-txt .kick{font-family:'Cormorant Garamond';font-style:italic;letter-spacing:3px;color:var(--clay);font-size:1.2rem}
+.story-txt h2{font-size:clamp(2.2rem,5vw,3.2rem);color:var(--sage-d);line-height:1.14;margin:4px 0 6px}
+.story-txt p{color:var(--ink-soft);margin-top:16px;font-size:1.07rem}
+.story-txt .sig{margin-top:26px;font-family:'Cormorant Garamond';font-style:italic;color:var(--clay-d);font-size:1.35rem;display:flex;align-items:center;gap:10px}
+.story-txt .sig i{color:var(--sage);font-size:1.3rem}
+.story-imgs{position:relative;height:500px}
+.story-imgs img{position:absolute;border-radius:var(--r);box-shadow:var(--shadow);object-fit:cover}
+.story-imgs .a{width:62%;height:80%;top:0;right:0;z-index:2}
+.story-imgs .b{width:50%;height:52%;bottom:0;left:0;z-index:3;border:6px solid var(--cream)}
+
+/* features */
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat{background:var(--paper);border:1px solid rgba(92,111,86,.16);border-radius:var(--r);padding:32px 22px;text-align:center;transition:.32s}
+.feat:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--clay-l)}
+.feat i{font-size:2.1rem;color:var(--clay);background:var(--sand);width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin:0 auto 16px}
+.feat h3{color:var(--sage-d);font-size:1.5rem;margin-bottom:4px}
+.feat p{color:var(--ink-soft);font-size:.94rem}
+
+/* selection */
+.sel-sec{background:var(--paper)}
+.sel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.sel-card{background:var(--cream);border-radius:var(--r);overflow:hidden;transition:.35s;box-shadow:0 14px 40px -28px rgba(0,0,0,.4)}
+.sel-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.sel-card .ph{height:260px;overflow:hidden}
+.sel-card .ph img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.sel-card:hover .ph img{transform:scale(1.07)}
+.sel-card .bd{padding:22px 24px}
+.sel-card .bd h3{font-size:1.55rem;color:var(--sage-d)}
+.sel-card .bd .en{display:block;font-family:'Cormorant Garamond';font-style:italic;font-size:1rem;letter-spacing:1px;color:var(--clay);margin:-2px 0 6px}
+.sel-card .bd p{color:var(--ink-soft);font-size:.96rem}
+
+/* selection list */
+.menu-sec{background:var(--sage-d);color:var(--cream)}
+.menu-sec .sec-head h2{color:var(--cream)}
+.menu-sec .sec-head .kick{color:var(--clay-l)}
+.menu-sec .sec-head p{color:#d6cdba}
+.mlist{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8px 50px}
+.mrow{display:flex;align-items:flex-start;gap:14px;padding:16px 4px;border-bottom:1px solid rgba(244,236,221,.16)}
+.mrow i{color:var(--clay-l);font-size:1.4rem;margin-top:3px}
+.mrow .nm{font-family:'Markazi Text';font-weight:600;font-size:1.4rem;color:var(--cream);line-height:1.2}
+.mrow .nm .en{display:block;font-family:'Cormorant Garamond';font-style:italic;font-size:.95rem;letter-spacing:.5px;color:#a7b59f}
+.mrow .nm small{display:block;font-family:'Tajawal';font-size:.86rem;color:#c8c0ae;font-weight:300;margin-top:2px}
+.menu-note{text-align:center;color:#cdc4b1;font-size:.96rem;margin-top:34px}
+.menu-note a{color:var(--clay-l);border-bottom:1px solid var(--clay-l)}
+
+/* gallery */
+.gal-sec{background:var(--sand)}
+.gal{columns:3;column-gap:16px}
+.gal img{width:100%;border-radius:12px;margin-bottom:16px;cursor:pointer;transition:.35s;box-shadow:0 12px 30px -22px rgba(0,0,0,.5)}
+.gal img:hover{transform:scale(1.02);filter:brightness(1.05)}
+.lb{position:fixed;inset:0;z-index:120;background:rgba(40,32,22,.95);display:none;align-items:center;justify-content:center;padding:30px}
+.lb.open{display:flex}
+.lb img{max-width:92%;max-height:88vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb .x{position:absolute;top:24px;left:28px;color:#fff;font-size:2.2rem;background:none;border:none;cursor:pointer}
+
+/* reviews */
+.rev-sec{background:var(--cream)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{background:var(--paper);border-radius:var(--r);padding:30px 28px;border:1px solid rgba(92,111,86,.14);position:relative}
+.rev .q{font-family:'Cormorant Garamond';font-size:3.8rem;color:var(--clay);line-height:.5;height:30px}
+.rev .stars{color:var(--clay);font-size:1rem;margin:6px 0 14px;letter-spacing:2px}
+.rev p{color:var(--ink-soft);font-size:1.04rem}
+.rev .who{margin-top:18px;font-family:'Markazi Text';font-weight:600;font-size:1.2rem;color:var(--sage-d);display:flex;align-items:center;gap:9px}
+.rev .who i{color:var(--clay-l)}
+
+/* visit */
+.visit{background:var(--marble);color:#ece5d6}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.visit .kick{font-family:'Cormorant Garamond';font-style:italic;letter-spacing:3px;color:var(--clay-l);font-size:1.2rem}
+.visit h2{font-size:clamp(2.2rem,5vw,3.2rem);color:#fff;line-height:1.12;margin-top:2px}
+.vrow{display:flex;gap:16px;align-items:flex-start;margin-top:22px}
+.vrow i{font-size:1.5rem;color:var(--clay-l);margin-top:3px}
+.vrow b{font-family:'Markazi Text';font-weight:600;font-size:1.3rem;color:#fff;display:block;line-height:1.3}
+.vrow span{color:#c4bdac;font-size:.98rem}
+.visit-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.map-card{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);border:6px solid rgba(255,255,255,.06);height:430px}
+.map-card iframe{width:100%;height:100%;border:0}
+
+footer{background:var(--sage-d);color:#cdc4b1;padding:58px 0 30px;text-align:center}
+footer .fbrand{font-family:'Cormorant Garamond';font-weight:600;font-size:3rem;letter-spacing:5px;color:var(--cream)}
+footer .fsub{font-family:'Cormorant Garamond';font-style:italic;font-size:1.05rem;color:var(--clay-l);letter-spacing:2px;margin-top:2px}
+footer .fsoc{display:flex;gap:14px;justify-content:center;margin:24px 0}
+footer .fsoc a{width:46px;height:46px;border-radius:50%;border:1px solid rgba(244,236,221,.22);display:grid;place-items:center;font-size:1.3rem;color:var(--cream);transition:.3s}
+footer .fsoc a:hover{background:var(--clay);border-color:var(--clay)}
+footer .fcopy{font-size:.84rem;color:#9aa392;margin-top:18px;border-top:1px solid rgba(244,236,221,.1);padding-top:22px}
+
+.rv{opacity:0;transform:translateY(34px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:980px){.feats{grid-template-columns:1fr 1fr}}
+@media(max-width:920px){
+  .story-grid,.visit-grid{grid-template-columns:1fr;gap:40px}
+  .sel-grid,.rev-grid{grid-template-columns:1fr 1fr}
+  .mlist{grid-template-columns:1fr;gap:0 0}
+  .gal{columns:2}
+}
+@media(max-width:680px){
+  nav ul{display:none}.burger{display:block}
+  .sec{padding:70px 0}
+  .feats,.sel-grid,.rev-grid{grid-template-columns:1fr}
+  .gal{columns:1}
+  .hero .wrap{padding-top:120px;padding-bottom:40px}
+  .story-imgs{height:420px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="top">
+  <div class="brand">CŪV</div>
+  <ul>
+    <li><a href="#story">القصة</a></li>
+    <li><a href="#selection">المختارات</a></li>
+    <li><a href="#menu">القائمة</a></li>
+    <li><a href="#gallery">المعرض</a></li>
+    <li><a href="#visit">الزيارة</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="القائمة"><i class="ph ph-list"></i></button>
+</nav>
+
+<div class="mnav" id="mnav">
+  <button class="mclose" id="mclose" aria-label="إغلاق"><i class="ph ph-x"></i></button>
+  <span class="deco">CŪV · Specialty Coffee</span>
+  <a href="#story">القصة</a>
+  <a href="#selection">المختارات</a>
+  <a href="#menu">القائمة</a>
+  <a href="#gallery">المعرض</a>
+  <a href="#visit">الزيارة</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow"><i class="ph-fill ph-leaf"></i> Specialty Coffee · حي مروج الأمير، تبوك</span>
+    <h1>CŪV<span class="sub">قهوة مختصة</span></h1>
+    <p class="moto">“Calm, sunlit, specialty.”</p>
+    <p class="lead">مساحةٌ مينمال دافئة تنساب فيها الشمس — قهوة مختصة، ماتشا، وحلويات، بتصميمٍ هادئ يدعوك للروقان في قلب تبوك.</p>
+    <div class="hero-cta">
+      <a class="btn btn-clay" href="#menu"><i class="ph ph-coffee"></i> اكتشف القائمة</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/place/CUV+CAFE+-+(Tabuk)/@28.4390625,36.5569375,17z" target="_blank" rel="noopener"><i class="ph ph-map-pin"></i> الاتجاهات</a>
+    </div>
+    <div class="hero-meta">
+      <div class="it"><i class="ph-fill ph-star"></i> 4.6 · 33 تقييم</div>
+      <div class="it"><i class="ph ph-clock"></i> من 7 صباحًا</div>
+      <div class="it"><i class="ph ph-sun"></i> أجواء مشمسة هادئة</div>
+      <div class="it"><i class="ph ph-coffee-bean"></i> قهوة مختصة</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="track">
+    <span>قهوة مختصة</span><i class="ph-fill ph-circle"></i>
+    <span>ماتشا</span><i class="ph-fill ph-circle"></i>
+    <span>قهوة إثيوبية</span><i class="ph-fill ph-circle"></i>
+    <span>فلتر وفيلتر</span><i class="ph-fill ph-circle"></i>
+    <span>كريب وحلويات</span><i class="ph-fill ph-circle"></i>
+    <span>أجواء مينمال</span><i class="ph-fill ph-circle"></i>
+    <span>قهوة مختصة</span><i class="ph-fill ph-circle"></i>
+    <span>ماتشا</span><i class="ph-fill ph-circle"></i>
+    <span>قهوة إثيوبية</span><i class="ph-fill ph-circle"></i>
+    <span>فلتر وفيلتر</span><i class="ph-fill ph-circle"></i>
+    <span>كريب وحلويات</span><i class="ph-fill ph-circle"></i>
+    <span>أجواء مينمال</span><i class="ph-fill ph-circle"></i>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="sec story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-txt rv">
+      <span class="kick">Our Story</span>
+      <h2>هدوءٌ مينمال<br>وضوءُ الشمس</h2>
+      <p>في <strong>CŪV</strong> كل تفصيلة مدروسة بعناية؛ من رخام الكاونتر الأخضر وأرفف الخشب الدافئ، إلى اللوحات الترابية ومقاعد الخيزران والبوكليه — مساحةٌ مينمال هادئة تنساب فيها الشمس وتدعوك للروقان.</p>
+      <p>نقدّم القهوة المختصة كما تستحق — إسبريسو وفلتر وماتشا — مع لمساتٍ من الحلى والكريب، في تجربةٍ بسيطة وراقية وصفها زوّارنا بأنها «رايقة خصوصًا مع الشمس».</p>
+      <div class="sig"><i class="ph-fill ph-leaf"></i> CŪV — Specialty Coffee</div>
+    </div>
+    <div class="story-imgs rv">
+      <img class="a" src="img/logo-lounge.jpg" alt="جلسة CŪV وشعار المقهى">
+      <img class="b" src="img/interior.jpg" alt="التصميم الداخلي لـ CŪV">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">Why CŪV</span>
+      <h2>تجربة مختلفة</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="feats">
+      <div class="feat rv"><i class="ph ph-coffee-bean"></i><h3>قهوة مختصة</h3><p>إسبريسو وفلتر وقهوة إثيوبية — حبوبٌ مختارة وتحضيرٌ بعناية.</p></div>
+      <div class="feat rv"><i class="ph ph-leaf"></i><h3>ماتشا وأكثر</h3><p>ماتشا لاتيه ومشروباتٌ منعشة بحضورٍ مميز ونكهاتٍ متنوّعة.</p></div>
+      <div class="feat rv"><i class="ph ph-sun"></i><h3>تصميم مينمال</h3><p>رخامٌ ودفءُ خشب وضوءُ شمس — مساحةٌ هادئة تريح العين والبال.</p></div>
+      <div class="feat rv"><i class="ph ph-cookie"></i><h3>حلى وكريب</h3><p>حلوياتٌ لذيذة وكريب طازج — تفاصيل تُكمل فنجانك.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTION -->
+<section class="sec sel-sec" id="selection">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">Signature</span>
+      <h2>مختارات CŪV</h2>
+      <p>لمحةٌ من أبرز ما نقدّمه — والقائمة الكاملة بانتظارك في المقهى.</p>
+    </div>
+    <div class="sel-grid">
+      <div class="sel-card rv">
+        <div class="ph"><img src="img/matcha.jpg" alt="ماتشا لاتيه"></div>
+        <div class="bd"><h3>ماتشا لاتيه</h3><span class="en">Matcha Latte</span><p>ماتشا حريرية بلونٍ أخضر نابض ولمسةٍ كريمية — من أكثر ما يُطلب.</p></div>
+      </div>
+      <div class="sel-card rv">
+        <div class="ph"><img src="img/iced-hibiscus.jpg" alt="مشروب بارد منعش"></div>
+        <div class="bd"><h3>مشروبات منعشة</h3><span class="en">Iced &amp; Refreshing</span><p>مشروباتٌ باردة بلمسةٍ من الفواكه والبطيخ — منعشة تحت الشمس.</p></div>
+      </div>
+      <div class="sel-card rv">
+        <div class="ph"><img src="img/counter-crepes.jpg" alt="كريب وحلويات CŪV"></div>
+        <div class="bd"><h3>كريب وحلويات</h3><span class="en">Crepes &amp; Sweets</span><p>كريب طازج وحلوياتٌ يومية — «الحلى لذيذ» كما وصفه زوّارنا.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU (selection list, no fabricated prices) -->
+<section class="sec menu-sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">The Menu</span>
+      <h2>قائمتنا</h2>
+      <p>تشكيلةٌ مختصة بين القهوة والماتشا والحلى — تُحضَّر طازجة لكل طلب.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="mlist rv">
+      <div class="mrow"><i class="ph ph-coffee"></i><span class="nm">إسبريسو<span class="en">Espresso Bar</span><small>أمريكانو · لاتيه · كابتشينو · سبانش لاتيه</small></span></div>
+      <div class="mrow"><i class="ph ph-drop-half"></i><span class="nm">قهوة الفلتر<span class="en">Filter &amp; Ethiopian</span><small>قهوة اليوم وحبوبٌ مختصة بطرق تحضير متنوّعة</small></span></div>
+      <div class="mrow"><i class="ph ph-leaf"></i><span class="nm">ماتشا<span class="en">Matcha</span><small>ماتشا لاتيه حار أو بارد بلمسةٍ كريمية</small></span></div>
+      <div class="mrow"><i class="ph ph-snowflake"></i><span class="nm">مشروبات باردة<span class="en">Iced &amp; Signature</span><small>مشروباتٌ منعشة بنكهاتٍ متنوّعة</small></span></div>
+      <div class="mrow"><i class="ph ph-cookie"></i><span class="nm">حلويات<span class="en">Sweets</span><small>تشكيلةٌ يومية من الحلى الطازج</small></span></div>
+      <div class="mrow"><i class="ph ph-fork-knife"></i><span class="nm">كريب<span class="en">Crepes</span><small>كريب طازج بحشواتٍ متنوّعة</small></span></div>
+    </div>
+    <p class="menu-note rv">للاطلاع على القائمة الكاملة والأسعار، تفضّل بزيارتنا أو تابعنا على <a href="https://www.instagram.com/cuvcafe" target="_blank" rel="noopener">إنستغرام @cuvcafe</a>.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gal-sec" id="gallery">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">Gallery</span>
+      <h2>لمحات من CŪV</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gal rv">
+      <img src="img/storefront-night.jpg" alt="واجهة CŪV ليلًا">
+      <img src="img/logo-lounge.jpg" alt="جلسة وشعار CŪV">
+      <img src="img/bar.jpg" alt="ركن الباريستا">
+      <img src="img/matcha.jpg" alt="ماتشا لاتيه">
+      <img src="img/interior.jpg" alt="التصميم الداخلي">
+      <img src="img/iced-hibiscus.jpg" alt="مشروب بارد منعش">
+      <img src="img/counter-crepes.jpg" alt="كريب وحلويات">
+      <img src="img/bar2.jpg" alt="كاونتر الرخام الأخضر">
+      <img src="img/hero.jpg" alt="واجهة CŪV نهارًا">
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec rev-sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">Guests Say</span>
+      <h2>كلمات زوّارنا</h2>
+      <p>مقتطفات حقيقية من تقييمات CŪV على خرائط جوجل.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev rv">
+        <div class="q">”</div>
+        <div class="stars">★★★★★</div>
+        <p>المكان مرتّب والأصناف جيدة، والموظفون في قمة الاحترافية — خاصة منصور في قمة الأخلاق وحسن الاستقبال.</p>
+        <div class="who"><i class="ph-fill ph-user-circle"></i> Waleed Al-Marwani · Local Guide</div>
+      </div>
+      <div class="rev rv">
+        <div class="q">”</div>
+        <div class="stars">★★★★★</div>
+        <p>المكان رايق خصوصًا مع الشمس، والحلا لذيذ والقهوة كمان.</p>
+        <div class="who"><i class="ph-fill ph-user-circle"></i> K. O</div>
+      </div>
+      <div class="rev rv">
+        <div class="q">”</div>
+        <div class="stars">★★★★☆</div>
+        <p>الكوفي رايق وهادي ولذيذ — مكانٌ جميل للجلوس والاستمتاع بفنجان.</p>
+        <div class="who"><i class="ph-fill ph-user-circle"></i> Mohamad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="rv">
+      <span class="kick">Visit Us</span>
+      <h2>تفضّل بزيارتنا</h2>
+      <div class="vrow"><i class="ph ph-map-pin"></i><div><b>الموقع</b><span>حي مروج الأمير، تبوك 47311</span></div></div>
+      <div class="vrow"><i class="ph ph-clock"></i><div><b>ساعات العمل</b><span>يوميًا · يفتح 7:00 صباحًا</span></div></div>
+      <div class="vrow"><i class="ph ph-instagram-logo"></i><div><b>تابعنا</b><span dir="ltr">@cuvcafe</span></div></div>
+      <div class="vrow"><i class="ph ph-navigation-arrow"></i><div><b>الرمز البريدي للموقع</b><span dir="ltr">CHQ4+JQ Tabuk</span></div></div>
+      <div class="visit-cta">
+        <a class="btn btn-clay" href="https://www.instagram.com/cuvcafe" target="_blank" rel="noopener"><i class="ph ph-instagram-logo"></i> إنستغرام</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/place/CUV+CAFE+-+(Tabuk)/@28.4390625,36.5569375,17z" target="_blank" rel="noopener"><i class="ph ph-map-pin-line"></i> افتح الخريطة</a>
+      </div>
+    </div>
+    <div class="map-card rv">
+      <iframe src="https://www.google.com/maps?q=28.4390625,36.5569375&z=16&output=embed" loading="lazy" title="موقع CŪV Cafe"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">CŪV</div>
+    <div class="fsub">Specialty Coffee · تبوك</div>
+    <div class="fsoc">
+      <a href="https://www.instagram.com/cuvcafe" target="_blank" rel="noopener" aria-label="إنستغرام"><i class="ph ph-instagram-logo"></i></a>
+      <a href="https://www.google.com/maps/place/CUV+CAFE+-+(Tabuk)/@28.4390625,36.5569375,17z" target="_blank" rel="noopener" aria-label="الخريطة"><i class="ph ph-map-pin"></i></a>
+    </div>
+    <div class="fcopy">© 2026 CŪV Specialty Coffee — تبوك</div>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><button class="x" id="lbx"><i class="ph ph-x"></i></button><img id="lbimg" src="" alt=""></div>
+
+<script>
+const mnav=document.getElementById('mnav');
+document.getElementById('burger').onclick=()=>{mnav.classList.add('open');document.body.style.overflow='hidden'};
+const closeM=()=>{mnav.classList.remove('open');document.body.style.overflow=''};
+document.getElementById('mclose').onclick=closeM;
+document.querySelectorAll('#mnav a:not([href^="#"])').forEach(a=>a.addEventListener('click',closeM));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href')); if(!t)return; e.preventDefault();
+  const wasOpen=mnav.classList.contains('open'); closeM();
+  const go=()=>scrollTo({top:t.getBoundingClientRect().top+scrollY-64,behavior:'smooth'});
+  wasOpen?setTimeout(go,80):go();
+}));
+
+const lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
+document.querySelectorAll('.gal img').forEach(im=>im.addEventListener('click',()=>{lbimg.src=im.src;lb.classList.add('open')}));
+const closeLb=()=>lb.classList.remove('open');
+document.getElementById('lbx').onclick=closeLb;
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{const s=scrollY>40;nav.classList.toggle('scrolled',s);nav.classList.toggle('top',!s)});
+</script>
+</body>
+</html>
